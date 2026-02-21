@@ -1,1 +1,60 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <style>
+        body {
+            background-color: #ffccf2;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 50px;
+            animation: fadeIn 2s;
+        }
+        h1 {
+            color: #ff69b4;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .balloons {
+            position: absolute;
+            left: 50%;
+            animation: float 10s infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 1.5em;
+            color: #d5006d;
+        }
+    </style>
+</head>
+<body>
+    <h1>Happy Birthday to You!</h1>
+    <div class="message">
+        Wishing you a day filled with love, joy, and all your favorite things. 
+        May all your dreams come true this year!
+    </div>
+    <script>
+        const messages = [
+            "Make a wish!",
+            "You're amazing!",
+            "Celebrate your special day!",
+            "Happiness is coming your way!",
+            "Here's to a year full of blessings!"
+        ];
+        setInterval(() => {
+            const randomIndex = Math.floor(Math.random() * messages.length);
+            document.querySelector('.message').innerText = messages[randomIndex];
+        }, 3000);
+    </script>
+    <img src="path_to_balloons_image.png" class="balloons" alt="Balloons" />
+</body>
+</html>
