@@ -3,58 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday!</title>
+    <title>Romantic Birthday Surprise</title>
     <style>
         body {
-            background-color: #ffccf2;
-            font-family: 'Arial', sans-serif;
+            background-color: #ffefff;
             text-align: center;
-            padding: 50px;
-            animation: fadeIn 2s;
+            font-family: Arial, sans-serif;
         }
         h1 {
             color: #ff69b4;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        #loading {
+            display: block;
+            font-size: 2em;
+            margin-top: 20%;
         }
-        .balloons {
-            position: absolute;
-            left: 50%;
-            animation: float 10s infinite;
+        .hidden {
+            display: none;
         }
-        @keyframes float {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0); }
-        }
-        .message {
-            margin-top: 20px;
+        .button {
+            margin: 20px;
+            padding: 15px 30px;
             font-size: 1.5em;
-            color: #d5006d;
+            color: white;
+            background-color: #ff1493;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #celebration {
+            display: none;
+        }
+        #cake {
+            display: none;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
-    <h1>Happy Birthday to You!</h1>
-    <div class="message">
-        Wishing you a day filled with love, joy, and all your favorite things. 
-        May all your dreams come true this year!
+    <div id="loading">
+        <p>Do you want to see what I made?</p>
+        <button class="button" id="yes">Yes</button>
+        <button class="button" id="no">No</button>
+    </div>
+    <div id="celebration" class="hidden">
+        <h1>Happy Birthday!</h1>
+        <p>🎉 Let's celebrate with lights, music, and wishes!</p>
+        <div id="cake" class="hidden">
+            <img src="cake.gif" alt="Cake with candles" style="width: 300px;">
+            <p>Blow out the candles and make a wish!</p>
+        </div>
+        <button class="button" id="blowCandles">Blow Candles</button>
+        <button class="button" id="cutCake">Cut Cake</button>
     </div>
     <script>
-        const messages = [
-            "Make a wish!",
-            "You're amazing!",
-            "Celebrate your special day!",
-            "Happiness is coming your way!",
-            "Here's to a year full of blessings!"
-        ];
-        setInterval(() => {
-            const randomIndex = Math.floor(Math.random() * messages.length);
-            document.querySelector('.message').innerText = messages[randomIndex];
-        }, 3000);
+        document.getElementById('yes').onclick = function() {
+            document.getElementById('loading').classList.add('hidden');
+            document.getElementById('celebration').classList.remove('hidden');
+            document.body.style.backgroundColor = '#fff5f5';
+            let audio = new Audio('happy-birthday.mp3');
+            audio.play();
+        };
+
+        document.getElementById('no').onclick = function() {
+            alert('Maybe next time!');
+        };
+
+        document.getElementById('blowCandles').onclick = function() {
+            document.getElementById('cake').classList.remove('hidden');
+        };
+
+        document.getElementById('cutCake').onclick = function() {
+            alert('Yay! Here are 3 wishes from the creator: 1. Happiness 2. Success 3. Love!');
+        };
     </script>
-    <img src="path_to_balloons_image.png" class="balloons" alt="Balloons" />
 </body>
 </html>
